@@ -70,8 +70,32 @@ Combination of `cloudfront:setup` and `cloudfront:build:deploy` commands with or
 
 Remove an entire stack configured in `serverless.yml` via CloudFormation.
 
-# CloudFront URL:
+# Task 1:
+### CloudFront URL:
 https://d3444z4xskp0c.cloudfront.net/
 
-# S3-website:
+### S3-website:
 https://shop-react-redux-cloudfront---hs.s3.eu-west-1.amazonaws.com/index.html
+
+# Task 2:
+### Product Service API:
+- https://s2e3pw15wc.execute-api.eu-west-1.amazonaws.com/dev/products
+- https://s2e3pw15wc.execute-api.eu-west-1.amazonaws.com/dev/products/1
+
+### SWAGGER documentation:
+https://app.swaggerhub.com/apis/Eillihn/shop-react-redux-cloudfront/1.0.0
+
+# Notes:
+
+## EMFILE error
+To fix EMFILE error when launching the serverless “deploy” script:
+
+1. install graceful-fs: npm install graceful-fs
+2. go to file: node_modules/serverless/lib/plugins/package/lib/zip-service.js
+3. replace this line:
+   const fs = BbPromise.promisifyAll(require('fs'));
+   by this:
+   var realFs = require('fs')
+   var gracefulFs = require('graceful-fs')
+   gracefulFs.gracefulify(realFs)
+   const fs = BbPromise.promisifyAll(realFs);

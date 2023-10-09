@@ -1,0 +1,202 @@
+[
+  {
+    "id": 1,
+    "title": "Settlers of Catan",
+    "description": "A popular strategy board game where players collect and trade resources to build roads, settlements, and cities.",
+    "price": 34.99,
+    "category": "Strategy",
+    "author": "Klaus Teuber",
+    "weight": 1.5,
+    "players": "3-4"
+  },
+  {
+    "id": 2,
+    "title": "Ticket to Ride",
+    "description": "A railway-themed board game where players collect train cards and build routes across a map.",
+    "price": 39.99,
+    "category": "Strategy",
+    "author": "Alan R. Moon",
+    "weight": 1.2,
+    "players": "2-5"
+  },
+  {
+    "id": 3,
+    "title": "Pandemic",
+    "description": "A cooperative board game where players work together to stop the spread of deadly diseases.",
+    "price": 44.99,
+    "category": "Cooperative",
+    "author": "Matt Leacock",
+    "weight": 1.0,
+    "players": "2-4"
+  },
+  {
+    "id": 4,
+    "title": "Carcassonne",
+    "description": "A tile-laying board game where players build a medieval landscape with cities, roads, and fields.",
+    "price": 29.99,
+    "category": "Tile Placement",
+    "author": "Klaus-Jürgen Wrede",
+    "weight": 0.9,
+    "players": "2-5"
+  },
+  {
+    "id": 5,
+    "title": "Dominion",
+    "description": "A deck-building card game where players compete to build the most powerful kingdom.",
+    "price": 36.99,
+    "category": "Deck Building",
+    "author": "Donald X. Vaccarino",
+    "weight": 0.7,
+    "players": "2-4"
+  },
+  {
+    "id": 6,
+    "title": "Chess",
+    "description": "A classic two-player strategy board game with a history dating back over a thousand years.",
+    "price": 19.99,
+    "category": "Strategy",
+    "author": "Unknown",
+    "weight": 1.1,
+    "players": "2"
+  },
+  {
+    "id": 7,
+    "title": "Risk",
+    "description": "A global domination strategy board game where players vie for control of the world.",
+    "price": 27.99,
+    "category": "Strategy",
+    "author": "Albert Lamorisse",
+    "weight": 1.3,
+    "players": "2-6"
+  },
+  {
+    "id": 8,
+    "title": "Scrabble",
+    "description": "A word game where players create words on a game board using letter tiles with different point values.",
+    "price": 23.99,
+    "category": "Word",
+    "author": "Alfred Butts",
+    "weight": 0.8,
+    "players": "2-4"
+  },
+  {
+    "id": 9,
+    "title": "The Settlers of Catan: Cities & Knights",
+    "description": "An expansion for Settlers of Catan that adds new elements and challenges to the game.",
+    "price": 19.99,
+    "category": "Strategy",
+    "author": "Klaus Teuber",
+    "weight": 0.3,
+    "players": "3-4"
+  },
+  {
+    "id": 10,
+    "title": "Twilight Struggle",
+    "description": "A two-player game simulating the Cold War, where players compete for global influence.",
+    "price": 49.99,
+    "category": "Strategy",
+    "author": "Ananda Gupta and Jason Matthews",
+    "weight": 1.4,
+    "players": "2"
+  },
+  {
+    "id": 11,
+    "title": "Agricola",
+    "description": "A farming-themed board game where players build and manage their own farms.",
+    "price": 42.99,
+    "category": "Strategy",
+    "author": "Uwe Rosenberg",
+    "weight": 1.2,
+    "players": "1-5"
+  },
+  {
+    "id": 12,
+    "title": "Betrayal at Baldur's Gate",
+    "description": "A game where players explore a haunted house, but one of them may betray the group.",
+    "price": 37.99,
+    "category": "Horror",
+    "author": "Avalon Hill",
+    "weight": 1.0,
+    "players": "3-6"
+  },
+  {
+    "id": 13,
+    "title": "7 Wonders",
+    "description": "A card drafting game where players build ancient civilizations and compete for resources.",
+    "price": 33.99,
+    "category": "Card Drafting",
+    "author": "Antoine Bauza",
+    "weight": 0.9,
+    "players": "2-7"
+  },
+  {
+    "id": 14,
+    "title": "Betrayal at House on the Hill",
+    "description": "A horror-themed game where players explore a haunted mansion with a traitor mechanic.",
+    "price": 39.99,
+    "category": "Horror",
+    "author": "Avalon Hill",
+    "weight": 1.2,
+    "players": "3-6"
+  },
+  {
+    "id": 15,
+    "title": "Pictionary",
+    "description": "A drawing and guessing game where players sketch clues to words and phrases.",
+    "price": 24.99,
+    "category": "Party",
+    "author": "Robert Angel",
+    "weight": 0.6,
+    "players": "4+"
+  },
+  {
+    "id": 16,
+    "title": "Axis & Allies",
+    "description": "A WWII-themed strategy board game where players command armies and engage in global conflict.",
+    "price": 46.99,
+    "category": "Strategy",
+    "author": "Larry Harris Jr.",
+    "weight": 1.5,
+    "players": "2-5"
+  },
+  {
+    "id": 17,
+    "title": "Codenames",
+    "description": "A word-based party game where players give one-word clues to guess their team's secret agents.",
+    "price": 19.99,
+    "category": "Party",
+    "author": "Vlaada Chvátil",
+    "weight": 0.5,
+    "players": "2-8"
+  },
+  {
+    "id": 18,
+    "title": "Betrayal Legacy",
+    "description": "A legacy version of Betrayal at Baldur's Gate with evolving storylines over multiple sessions.",
+    "price": 59.99,
+    "category": "Horror",
+    "author": "Avalon Hill",
+    "weight": 1.2,
+    "players": "3-5"
+  },
+  {
+    "id": 19,
+    "title": "Terraforming Mars",
+    "description": "A strategy game where players terraform Mars by developing industries and greenery.",
+    "price": 49.99,
+    "category": "Strategy",
+    "author": "Jacob Fryxelius",
+    "weight": 1.6,
+    "players": "1-5"
+  },
+  {
+    "id": 20,
+    "title": "Gloomhaven",
+    "description": "A cooperative campaign-driven dungeon crawl board game set in a dark fantasy world.",
+    "price": 99.99,
+    "category": "Adventure",
+    "author": "Isaac Childres",
+    "weight": 11.0,
+    "players": "1-4"
+  }
+]
