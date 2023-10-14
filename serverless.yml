@@ -4,7 +4,7 @@ frameworkVersion: '3'
 
 provider:
   name: aws
-  runtime: nodejs14.x
+  runtime: nodejs16.x
   region: eu-west-1
   # setup profile for AWS CLI.
   # profile: node-aws
@@ -138,3 +138,23 @@ resources:
       Value: !Ref WebAppS3Bucket
     WebAppCloudFrontDistributionOutput:
       Value: !GetAtt WebAppCloudFrontDistribution.DomainName
+
+functions:
+  getProductsList:
+    handler: service/product/getProductsList.handler
+    events:
+      - http:
+          path: products
+          method: get
+          cors: true
+  getProductsById:
+    handler: service/product/getProductsById.handler
+    events:
+      - http:
+          path: products/{productId}
+          method: get
+          cors: true
+          request:
+            parameters:
+              paths:
+                productId: true
