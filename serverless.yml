@@ -1,11 +1,11 @@
-service: shop-react-redux-cloudfront---hs
+service: aws-boardgames-shop
 
 frameworkVersion: '3'
 
 provider:
   name: aws
   runtime: nodejs16.x
-  region: eu-west-1
+  region: us-east-1
   # setup profile for AWS CLI.
   # profile: node-aws
 
@@ -19,7 +19,7 @@ plugins:
 
 custom:
   client:
-    bucketName: shop-react-redux-cloudfront---hs
+    bucketName: aws-boardgames-shop
     distributionFolder: dist
   s3BucketName: ${self:custom.client.bucketName}
 
@@ -131,6 +131,73 @@ resources:
           #   IncludeCookies: 'false'
           #   Bucket: mylogs.s3.amazonaws.com
           #   Prefix: myprefix
+    ProductsServiceLambdaAccessRole:
+      Type: AWS::IAM::Role
+      Properties:
+        RoleName: ProductsServiceLambdaAccessRole
+        AssumeRolePolicyDocument:
+          Version: '2012-10-17'
+          Statement:
+            - Effect: Allow
+              Principal:
+                Service:
+                  - lambda.amazonaws.com
+              Action:
+                - sts:AssumeRole
+        Policies:
+          - PolicyName: GetProductsListLambdaPolicy
+            PolicyDocument:
+              Version: '2012-10-17'
+              Statement:
+                - Effect: Allow
+                  Action:
+                    - dynamodb:Query
+                    - dynamodb:Scan
+                    - dynamodb:GetItem
+                    - dynamodb:PutItem
+                  Resource:
+                    - arn:aws:dynamodb:us-east-1:154716314884:table/Products
+                    - arn:aws:dynamodb:us-east-1:154716314884:table/Stocks
+          - PolicyName: LambdaBasicExecutionPolicy
+            PolicyDocument:
+              Version: '2012-10-17'
+              Statement:
+                - Effect: Allow
+                  Action:
+                    - logs:CreateLogGroup
+                    - logs:CreateLogStream
+                    - logs:PutLogEvents
+                  Resource:
+                    - arn:aws:logs:us-east-1:154716314884:log-group:/aws/lambda/aws-boardgames-shop-dev-createProduct:*
+                    - arn:aws:logs:us-east-1:154716314884:log-group:/aws/lambda/aws-boardgames-shop-dev-getProductsById:*
+                    - arn:aws:logs:us-east-1:154716314884:log-group:/aws/lambda/aws-boardgames-shop-dev-getProductsList:*
+
+  #    ProductsTable:
+  #      Type: AWS::DynamoDB::Table
+  #      Properties:
+  #        TableName: Products
+  #        AttributeDefinitions:
+  #          - AttributeName: id
+  #            AttributeType: N
+  #        KeySchema:
+  #          - AttributeName: id
+  #            KeyType: HASH
+  #        ProvisionedThroughput:
+  #          ReadCapacityUnits: 5
+  #          WriteCapacityUnits: 5
+  #    StocksTable:
+  #      Type: AWS::DynamoDB::Table
+  #      Properties:
+  #        TableName: Stocks
+  #        AttributeDefinitions:
+  #          - AttributeName: product_id
+  #            AttributeType: N
+  #        KeySchema:
+  #          - AttributeName: product_id
+  #            KeyType: HASH
+  #        ProvisionedThroughput:
+  #          ReadCapacityUnits: 5
+  #          WriteCapacityUnits: 5
 
   ## In order to print out the hosted domain via `serverless info` we need to define the DomainName output for CloudFormation
   Outputs:
@@ -140,8 +207,23 @@ resources:
       Value: !GetAtt WebAppCloudFrontDistribution.DomainName
 
 functions:
+  createProduct:
+    handler: service/product/createProduct.handler
+    role: ProductsServiceLambdaAccessRole
+    environment:
+      PRODUCTS_TABLE_NAME: Products
+      STOCKS_TABLE_NAME: Stocks
+    events:
+      - http:
+          path: products
+          method: post
+          cors: true
   getProductsList:
     handler: service/product/getProductsList.handler
+    role: ProductsServiceLambdaAccessRole
+    environment:
+      PRODUCTS_TABLE_NAME: Products
+      STOCKS_TABLE_NAME: Stocks
     events:
       - http:
           path: products
@@ -149,6 +231,10 @@ functions:
           cors: true
   getProductsById:
     handler: service/product/getProductsById.handler
+    role: ProductsServiceLambdaAccessRole
+    environment:
+      PRODUCTS_TABLE_NAME: Products
+      STOCKS_TABLE_NAME: Stocks
     events:
       - http:
           path: products/{productId}
