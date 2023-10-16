@@ -70,17 +70,17 @@ Combination of `cloudfront:setup` and `cloudfront:build:deploy` commands with or
 
 Remove an entire stack configured in `serverless.yml` via CloudFormation.
 
-# Task 1:
+# Task 2:
 ### CloudFront URL:
-https://d3444z4xskp0c.cloudfront.net/
+https://d8sooxvxnb4i5.cloudfront.net
 
 ### S3-website:
-https://shop-react-redux-cloudfront---hs.s3.eu-west-1.amazonaws.com/index.html
+https://aws-boardgames-shop.s3.amazonaws.com/index.html
 
-# Task 2:
+# Task 3:
 ### Product Service API:
-- https://s2e3pw15wc.execute-api.eu-west-1.amazonaws.com/dev/products
-- https://s2e3pw15wc.execute-api.eu-west-1.amazonaws.com/dev/products/1
+- https://riuj1dwdmi.execute-api.us-east-1.amazonaws.com/dev/products
+- https://riuj1dwdmi.execute-api.us-east-1.amazonaws.com/dev/products/1
 
 ### SWAGGER documentation:
 https://app.swaggerhub.com/apis/Eillihn/shop-react-redux-cloudfront/1.0.0
