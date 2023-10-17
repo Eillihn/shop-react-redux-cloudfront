@@ -4,6 +4,10 @@ export const ProductSchema = Yup.object({
   id: Yup.string(),
   title: Yup.string().required().default(""),
   description: Yup.string().default(""),
+  author: Yup.string().default(""),
+  players: Yup.string().default(""),
+  weight: Yup.number().positive().default(0),
+  category: Yup.string().default(""),
   price: Yup.number().positive().required().defined().default(0),
 });
 

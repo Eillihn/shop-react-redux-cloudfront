@@ -9,7 +9,7 @@ const response = {
 exports.handler = async (event) => {
   console.log(`Product data: ${event.body}`);
   try {
-    const { title, description, price, category, author, weight, players } =
+    const { title, description, price, category, author, weight, players, count = 0 } =
       JSON.parse(event.body);
 
     if (!title || !price) {
@@ -35,8 +35,16 @@ exports.handler = async (event) => {
         players
       }
     };
+    const stockParams = {
+      TableName: process.env.STOCKS_TABLE_NAME,
+      Item: {
+        product_id: productId,
+        count
+      }
+    };
 
     await dynamodb.put(productParams).promise();
+    await dynamodb.put(stockParams).promise();
 
     return {
       ...response,
