@@ -18,6 +18,10 @@ test("Renders products list", async () => {
       description: "Product 1 description",
       price: 1,
       count: 1,
+      category: "Strategy",
+      author: "Klaus Teuber",
+      weight: 1.5,
+      players: "3-4",
     },
     {
       id: "2",
@@ -25,6 +29,10 @@ test("Renders products list", async () => {
       description: "Product 2 description",
       price: 2,
       count: 2,
+      category: "Strategy",
+      author: "Klaus Teuber",
+      weight: 1.5,
+      players: "3-4",
     },
   ];
   server.use(

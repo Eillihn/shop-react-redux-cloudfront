@@ -1,17 +1,17 @@
-import Button from "@mui/material/Button";
-import Grid from "@mui/material/Grid";
-import { AvailableProduct, AvailableProductSchema } from "~/models/Product";
-import { Formik, Field, FormikProps, Form } from "formik";
-import TextField from "~/components/Form/TextField";
-import { useNavigate, useParams } from "react-router-dom";
-import PaperLayout from "~/components/PaperLayout/PaperLayout";
-import Typography from "@mui/material/Typography";
+import Button from '@mui/material/Button';
+import Grid from '@mui/material/Grid';
+import { AvailableProduct, AvailableProductSchema } from '~/models/Product';
+import { Formik, Field, FormikProps, Form } from 'formik';
+import TextField from '~/components/Form/TextField';
+import { useNavigate, useParams } from 'react-router-dom';
+import PaperLayout from '~/components/PaperLayout/PaperLayout';
+import Typography from '@mui/material/Typography';
 import {
   useAvailableProduct,
   useInvalidateAvailableProducts,
   useRemoveProductCache,
-  useUpsertAvailableProduct,
-} from "~/queries/products";
+  useUpsertAvailableProduct
+} from '~/queries/products';
 
 const initialValues: AvailableProduct = AvailableProductSchema.cast({});
 
@@ -27,22 +27,22 @@ export default function PageProductForm() {
     const productToSave = id
       ? {
           ...formattedValues,
-          id,
+          id
         }
       : formattedValues;
     return upsertAvailableProduct(productToSave, {
       onSuccess: () => {
         invalidateAvailableProducts();
         removeProductCache(id);
-        navigate("/admin/products");
-      },
+        navigate('/admin/products');
+      }
     });
   };
 
   return (
     <PaperLayout>
-      <Typography component="h1" variant="h4" align="center" mb={2}>
-        {id ? "Edit product" : "Create new product"}
+      <Typography component='h1' variant='h4' align='center' mb={2}>
+        {id ? 'Edit product' : 'Create new product'}
       </Typography>
       {isLoading ? (
         <>Loading...</>
@@ -53,25 +53,25 @@ export default function PageProductForm() {
           onSubmit={onSubmit}
         >
           {({ dirty, isSubmitting }: FormikProps<AvailableProduct>) => (
-            <Form autoComplete="off">
+            <Form autoComplete='off'>
               <Grid container spacing={2}>
                 <Grid item xs={12}>
                   <Field
                     component={TextField}
-                    name="title"
-                    label="Title"
+                    name='title'
+                    label='Title'
                     fullWidth
-                    autoComplete="off"
+                    autoComplete='off'
                     required
                   />
                 </Grid>
                 <Grid item xs={12}>
                   <Field
                     component={TextField}
-                    name="description"
-                    label="Description"
+                    name='description'
+                    label='Description'
                     fullWidth
-                    autoComplete="off"
+                    autoComplete='off'
                     multiline
                     required
                   />
@@ -79,34 +79,74 @@ export default function PageProductForm() {
                 <Grid item xs={12} sm={4}>
                   <Field
                     component={TextField}
-                    name="price"
-                    label="Price ($)"
+                    name='price'
+                    label='Price ($)'
                     fullWidth
-                    autoComplete="off"
+                    autoComplete='off'
                     required
                   />
                 </Grid>
                 <Grid item xs={12} sm={4}>
                   <Field
                     component={TextField}
-                    name="count"
-                    label="Count"
+                    name='count'
+                    label='Count'
                     fullWidth
-                    autoComplete="off"
+                    autoComplete='off'
                     required
                   />
                 </Grid>
-                <Grid item container xs={12} justifyContent="space-between">
+                <Grid item xs={12} sm={4}>
+                  <Field
+                    component={TextField}
+                    name='weight'
+                    label='Weight'
+                    fullWidth
+                    autoComplete='off'
+                    required
+                  />
+                </Grid>
+                <Grid item xs={12}>
+                  <Field
+                    component={TextField}
+                    name='category'
+                    label='Category'
+                    fullWidth
+                    autoComplete='off'
+                    required
+                  />
+                </Grid>
+                <Grid item xs={12}>
+                  <Field
+                    component={TextField}
+                    name='author'
+                    label='Author'
+                    fullWidth
+                    autoComplete='off'
+                    required
+                  />
+                </Grid>
+                <Grid item xs={12}>
+                  <Field
+                    component={TextField}
+                    name='players'
+                    label='Players'
+                    fullWidth
+                    autoComplete='off'
+                    required
+                  />
+                </Grid>
+                <Grid item container xs={12} justifyContent='space-between'>
                   <Button
-                    color="primary"
-                    onClick={() => navigate("/admin/products")}
+                    color='primary'
+                    onClick={() => navigate('/admin/products')}
                   >
                     Cancel
                   </Button>
                   <Button
-                    type="submit"
-                    variant="contained"
-                    color="primary"
+                    type='submit'
+                    variant='contained'
+                    color='primary'
                     disabled={!dirty || isSubmitting}
                   >
                     Save Product
