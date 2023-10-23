@@ -1,0 +1,24 @@
+{
+  "name": "import",
+  "version": "1.0.0",
+  "description": "",
+  "main": "importFileParser.js",
+  "scripts": {
+    "package:build": "sls package",
+    "deploy:dev": "sls deploy --stage dev",
+    "local": "sls offline --noPrependStageInUrl",
+    "test": "jest",
+    "test:watch": "jest --watchAll",
+    "format": "prettier \"**/*.+(js|jsx|json|yml|css|scss|ts|tsx|md)\" --write"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "aws-sdk": "^2.963.0",
+    "csv-parser": "^3.0.0"
+  },
+  "devDependencies": {
+    "jest": "^27.0.6",
+    "prettier": "^2.3.2"
+  }
+}

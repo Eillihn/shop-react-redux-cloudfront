@@ -1,0 +1,47 @@
+service: import-service
+frameworkVersion: '3'
+variablesResolutionMode: 20210219
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  stage: dev
+  region: us-east-1
+
+  iamRoleStatements:
+    - Effect: Allow
+      Action: 's3:ListBucket'
+      Resource:
+        - 'arn:aws:s3:::aws-boardgames-shop-uploaded'
+    - Effect: Allow
+      Action: 's3:*'
+      Resource:
+        - 'arn:aws:s3:::aws-boardgames-shop-uploaded/*'
+
+functions:
+  importProductsFile:
+    handler: src/importProductsFile.handler
+    events:
+      - http:
+          path: import
+          method: get
+          cors: true
+          request:
+            parameters:
+              querystrings:
+                name: true
+    environment:
+      IMPORT_BUCKET_NAME: aws-boardgames-shop-uploaded
+      IMPORT_CATALOG_NAME: uploaded
+      PARSED_CATALOG_NAME: parsed
+  importFileParser:
+    handler: src/importFileParser.handler
+    events:
+      - s3:
+          bucket: aws-boardgames-shop-uploaded
+          event: s3:ObjectCreated:*
+          existing: true
+    environment:
+      IMPORT_BUCKET_NAME: aws-boardgames-shop-uploaded
+      IMPORT_CATALOG_NAME: uploaded
+      PARSED_CATALOG_NAME: parsed
