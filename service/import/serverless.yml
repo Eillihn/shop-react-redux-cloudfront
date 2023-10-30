@@ -17,6 +17,10 @@ provider:
       Action: 's3:*'
       Resource:
         - 'arn:aws:s3:::aws-boardgames-shop-uploaded/*'
+    - Effect: Allow
+      Action: 'sqs:SendMessage'
+      Resource:
+        - '*'
 
 functions:
   importProductsFile:
@@ -45,3 +49,5 @@ functions:
       IMPORT_BUCKET_NAME: aws-boardgames-shop-uploaded
       IMPORT_CATALOG_NAME: uploaded
       PARSED_CATALOG_NAME: parsed
+      CATALOG_ITEMS_QUEUE_URL:
+        Fn::ImportValue: CatalogItemsQueueUrl

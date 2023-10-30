@@ -16,10 +16,11 @@ plugins:
   # How to build your own plugins: https://www.serverless.com/framework/docs/providers/aws/guide/plugins#service-local-plugin
   - serverless-single-page-app-plugin
   - serverless-s3-cleaner
+  - serverless-export-outputs
 
 custom:
   client:
-    bucketName: aws-boardgames-shop
+    bucketName: ${self:service}
     distributionFolder: dist
   s3BucketName: ${self:custom.client.bucketName}
 
@@ -144,6 +145,11 @@ resources:
                   - lambda.amazonaws.com
               Action:
                 - sts:AssumeRole
+        ManagedPolicyArns:
+          - arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole
+          - arn:aws:iam::aws:policy/AmazonSQSFullAccess
+          - arn:aws:iam::aws:policy/AmazonSNSFullAccess
+          - arn:aws:iam::aws:policy/AWSLambda_FullAccess
         Policies:
           - PolicyName: GetProductsListLambdaPolicy
             PolicyDocument:
@@ -168,9 +174,34 @@ resources:
                     - logs:CreateLogStream
                     - logs:PutLogEvents
                   Resource:
-                    - arn:aws:logs:us-east-1:154716314884:log-group:/aws/lambda/aws-boardgames-shop-dev-createProduct:*
-                    - arn:aws:logs:us-east-1:154716314884:log-group:/aws/lambda/aws-boardgames-shop-dev-getProductsById:*
-                    - arn:aws:logs:us-east-1:154716314884:log-group:/aws/lambda/aws-boardgames-shop-dev-getProductsList:*
+                    - arn:aws:logs:us-east-1:154716314884:log-group:/aws/lambda/${self:service}-dev-createProduct:*
+                    - arn:aws:logs:us-east-1:154716314884:log-group:/aws/lambda/${self:service}-dev-getProductsById:*
+                    - arn:aws:logs:us-east-1:154716314884:log-group:/aws/lambda/${self:service}-dev-getProductsList:*
+                    - arn:aws:logs:us-east-1:154716314884:log-group:/aws/lambda/${self:service}-dev-catalogBatchProcess:*
+    CatalogItemsQueue:
+      Type: 'AWS::SQS::Queue'
+    CatalogItemsQueueEventSourceMapping:
+      Type: 'AWS::Lambda::EventSourceMapping'
+      Properties:
+        BatchSize: 5
+        EventSourceArn:
+          Fn::GetAtt:
+            - CatalogItemsQueue
+            - Arn
+        FunctionName:
+          Fn::GetAtt:
+            - CatalogBatchProcessLambdaFunction
+            - Arn
+    CreateProductTopic:
+      Type: 'AWS::SNS::Topic'
+      Properties:
+        TopicName: CreateProductTopicName
+    CreateProductTopicSubscription:
+      Type: 'AWS::SNS::Subscription'
+      Properties:
+        Protocol: 'email'
+        TopicArn: !Ref CreateProductTopic
+        Endpoint: 'hanna_svirskaya@epam.com'
 
   #    ProductsTable:
   #      Type: AWS::DynamoDB::Table
@@ -205,6 +236,14 @@ resources:
       Value: !Ref WebAppS3Bucket
     WebAppCloudFrontDistributionOutput:
       Value: !GetAtt WebAppCloudFrontDistribution.DomainName
+    CatalogItemsQueueUrl:
+      Description: 'SQS Queue URL'
+      Value:
+        Fn::GetAtt:
+          - CatalogItemsQueue
+          - QueueUrl
+      Export:
+        Name: CatalogItemsQueueUrl
 
 functions:
   createProduct:
@@ -244,3 +283,18 @@ functions:
             parameters:
               paths:
                 productId: true
+  catalogBatchProcess:
+    handler: service/product/catalogBatchProcess.handler
+    role: ProductsServiceLambdaAccessRole
+    events:
+      - sqs:
+          arn:
+            Fn::GetAtt:
+              - CatalogItemsQueue
+              - Arn
+    environment:
+      SNS_TOPIC_ARN: !Ref CreateProductTopic
+      CATALOG_ITEMS_QUEUE_URL:
+        Fn::GetAtt:
+          - CatalogItemsQueue
+          - QueueUrl

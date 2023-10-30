@@ -1,6 +1,7 @@
 import AWS from 'aws-sdk';
 import csv from 'csv-parser';
 const s3 = new AWS.S3({ httpOptions: { timeout: 3000 } });
+const sqs = new AWS.SQS();
 
 export const handler = async (event) => {
   const Bucket = event.Records[0].s3.bucket.name;
@@ -16,6 +17,7 @@ export const handler = async (event) => {
       Bucket,
       Key,
     };
+    const records = [];
 
     await s3
       .copyObject({
@@ -29,8 +31,10 @@ export const handler = async (event) => {
     await new Promise(function (resolve, reject) {
       s3.getObject(params)
         .createReadStream()
-        .pipe(csv())
-        .on('data', (data) => console.log(data))
+        .pipe(csv({
+          separator: ';'
+        }))
+        .on('data', (data) => records.push(data))
         .on('error', (error) => reject(error))
         .on('end', () => resolve());
     });
@@ -42,6 +46,19 @@ export const handler = async (event) => {
       })
       .promise();
     console.log('File deleted.');
+
+    const queueUrl = process.env.CATALOG_ITEMS_QUEUE_URL;
+    console.log(`Queue Url: ${queueUrl}`);
+
+    for (const record of records) {
+    console.log(`JSON.stringify(record): ${JSON.stringify(record)}`);
+      await sqs
+        .sendMessage({
+          QueueUrl: queueUrl,
+          MessageBody: JSON.stringify(record),
+        })
+        .promise();
+    }
   } catch (e) {
     console.log(e);
   }

@@ -1,11 +1,11 @@
-id,title,description,price,category,author,weight,players
-456789,Monopoly,A classic board game where players buy, trade, and develop properties to become the wealthiest tycoon.,24.99,Strategy,Charles Darrow,1.4,2-8
-987654,Connect 4,A two-player strategy game where players take turns dropping colored discs to form a row of four.,15.99,Strategy,Howard Wexler,0.8,2
-123456,Sorry!,A family board game where players move pawns around the board, aiming to get all their pawns to the home space.,19.99,Family,William Henry Storey,1.0,2-4
-654321,Uno,A popular card game where players match cards by number or color and aim to be the first to play all their cards.,8.99,Card Game,Merle Robbins,0.2,2-10
-789123,Pictionary,A drawing and guessing game where players sketch clues to words and phrases.,24.99,Party,Robert Angel,0.6,4+
-321789,Scythe,A strategy board game set in an alternate-history 1920s where players compete for dominance and resources.,49.99,Strategy,Jamey Stegmaier,2.2,1-7
-135792,Jenga,A classic wooden block stacking game where players take turns removing blocks without causing the tower to collapse.,12.99,Party,Leslie Scott,0.9,1+
-876543,Battleship,A strategic naval combat game where players call out coordinates to sink each other's hidden fleets.,17.99,Strategy,Clifford Von Wickler,1.2,2
-543210,Dixit,A card-based party game where players use abstract illustrations to tell stories and guess each other's cards.,34.99,Party,Jean-Louis Roubira,1.2,3-6
-219876,Splendor,A card-based board game where players collect gems to purchase development cards and build a wealthy empire.,29.99,Strategy,Marc André,1.4,2-4
+id;title;description;price;category;author;weight;players;count
+456789;Monopoly;A classic board game where players buy, trade, and develop properties to become the wealthiest tycoon.;24.99;Strategy;Charles Darrow;1.4;2-8;10
+987654;Connect 4;A two-player strategy game where players take turns dropping colored discs to form a row of four.;15.99;Strategy;Howard Wexler;0.8;2;12
+123456;Sorry!;A family board game where players move pawns around the board, aiming to get all their pawns to the home space.;19.99;Family;William Henry Storey;1.0;2-4;11
+654321;Uno;A popular card game where players match cards by number or color and aim to be the first to play all their cards.;8.99;Card Game;Merle Robbins;0.2;2-10;2
+789123;Pictionary;A drawing and guessing game where players sketch clues to words and phrases.;24.99;Party;Robert Angel;0.6;4+;3
+321789;Scythe;A strategy board game set in an alternate-history 1920s where players compete for dominance and resources.;49.99;Strategy;Jamey Stegmaier;2.2;1-7;7
+135792;Jenga;A classic wooden block stacking game where players take turns removing blocks without causing the tower to collapse.;12.99;Party;Leslie Scott;0.9;1+;23
+876543;Battleship;A strategic naval combat game where players call out coordinates to sink each other's hidden fleets.;17.99;Strategy;Clifford Von Wickler;1.2;2;89
+543210;Dixit;A card-based party game where players use abstract illustrations to tell stories and guess each other's cards.;34.99;Party;Jean-Louis Roubira;1.2;3-6;1
+219876;Splendor;A card-based board game where players collect gems to purchase development cards and build a wealthy empire.;29.99;Strategy;Marc André;1.4;2-4;56

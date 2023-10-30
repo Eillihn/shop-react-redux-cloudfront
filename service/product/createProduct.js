@@ -8,8 +8,9 @@ const response = {
 };
 exports.handler = async (event) => {
   console.log(`Product data: ${event.body}`);
+
   try {
-    const { title, description, price, category, author, weight, players, count = 0 } =
+    const { productId = generateProductId(), title, description, price, category, author, weight, players, count = 0 } =
       JSON.parse(event.body);
 
     if (!title || !price) {
@@ -19,8 +20,6 @@ exports.handler = async (event) => {
         body: JSON.stringify({ message: 'Title and price are required.' })
       };
     }
-
-    const productId = generateProductId();
 
     const productParams = {
       TableName: process.env.PRODUCTS_TABLE_NAME,
