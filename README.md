@@ -72,15 +72,15 @@ Remove an entire stack configured in `serverless.yml` via CloudFormation.
 
 # Task 2:
 ### CloudFront URL:
-https://d8sooxvxnb4i5.cloudfront.net
+https://d2jn2th55bjksb.cloudfront.net
 
 ### S3-website:
 https://aws-boardgames-shop.s3.amazonaws.com/index.html
 
 # Task 3:
 ### Product Service API:
-- https://riuj1dwdmi.execute-api.us-east-1.amazonaws.com/dev/products
-- https://riuj1dwdmi.execute-api.us-east-1.amazonaws.com/dev/products/1
+- https://afkswsifzh.execute-api.us-east-1.amazonaws.com/dev/products
+- https://afkswsifzh.execute-api.us-east-1.amazonaws.com/dev/products/1
 
 ### SWAGGER documentation:
 https://app.swaggerhub.com/apis/Eillihn/shop-react-redux-cloudfront/1.0.0
