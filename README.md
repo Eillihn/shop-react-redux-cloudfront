@@ -75,7 +75,7 @@ Remove an entire stack configured in `serverless.yml` via CloudFormation.
 https://d2jn2th55bjksb.cloudfront.net
 
 ### S3-website:
-https://aws-boardgames-shop.s3.amazonaws.com/index.html
+http://aws-boardgames-shop.s3-website-us-east-1.amazonaws.com/
 
 # Task 3:
 ### Product Service API:

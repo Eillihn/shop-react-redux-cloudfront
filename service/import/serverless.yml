@@ -30,6 +30,7 @@ functions:
           path: import
           method: get
           cors: true
+          authorizer: arn:aws:lambda:us-east-1:154716314884:function:authorization-service-dev-basicAuthorizer
           request:
             parameters:
               querystrings:

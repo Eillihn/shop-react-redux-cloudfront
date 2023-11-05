@@ -184,14 +184,8 @@ resources:
       Type: 'AWS::Lambda::EventSourceMapping'
       Properties:
         BatchSize: 5
-        EventSourceArn:
-          Fn::GetAtt:
-            - CatalogItemsQueue
-            - Arn
-        FunctionName:
-          Fn::GetAtt:
-            - CatalogBatchProcessLambdaFunction
-            - Arn
+        EventSourceArn: !GetAtt CatalogItemsQueue.Arn
+        FunctionName: !GetAtt CatalogBatchProcessLambdaFunction.Arn
     CreateProductTopic:
       Type: 'AWS::SNS::Topic'
       Properties:
@@ -238,10 +232,7 @@ resources:
       Value: !GetAtt WebAppCloudFrontDistribution.DomainName
     CatalogItemsQueueUrl:
       Description: 'SQS Queue URL'
-      Value:
-        Fn::GetAtt:
-          - CatalogItemsQueue
-          - QueueUrl
+      Value: !GetAtt CatalogItemsQueue.QueueUrl
       Export:
         Name: CatalogItemsQueueUrl
 
@@ -288,13 +279,7 @@ functions:
     role: ProductsServiceLambdaAccessRole
     events:
       - sqs:
-          arn:
-            Fn::GetAtt:
-              - CatalogItemsQueue
-              - Arn
+          arn: !GetAtt CatalogItemsQueue.Arn
     environment:
       SNS_TOPIC_ARN: !Ref CreateProductTopic
-      CATALOG_ITEMS_QUEUE_URL:
-        Fn::GetAtt:
-          - CatalogItemsQueue
-          - QueueUrl
+      CATALOG_ITEMS_QUEUE_URL: !GetAtt CatalogItemsQueue.QueueUrl

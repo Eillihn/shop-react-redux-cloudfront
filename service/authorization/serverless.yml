@@ -1,0 +1,18 @@
+service: authorization-service
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: nodejs16.x
+  region: us-east-1
+
+plugins:
+  - serverless-dotenv-plugin
+
+useDotenv: true
+
+functions:
+  basicAuthorizer:
+    handler: src/basicAuthorizer.handler
+    environment:
+      Eillihn: ${env:Eillihn}
