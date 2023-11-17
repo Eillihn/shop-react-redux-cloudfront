@@ -1,9 +1,9 @@
 {
-  "name": "import",
+  "name": "product",
   "type": "module",
   "version": "1.0.0",
   "description": "",
-  "main": "src/importFileParser.mjs",
+  "main": "src/getProductsList.js",
   "scripts": {
     "package:build": "sls package",
     "deploy:dev": "sls deploy --stage dev",
@@ -13,7 +13,11 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "aws-sdk": "^2.963.0",
-    "csv-parser": "^3.0.0"
+    "aws-sdk": "^2.1497.0",
+    "csv-parser": "^3.0.0",
+    "pg": "^8.11.3"
+  },
+  "devDependencies": {
+    "serverless-export-outputs": "^1.0.2"
   }
 }

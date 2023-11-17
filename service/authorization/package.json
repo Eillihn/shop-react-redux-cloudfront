@@ -1,12 +1,14 @@
 {
   "name": "import",
+  "type": "module",
   "version": "1.0.0",
   "description": "",
   "main": "src/basicAuthorizer.mjs",
   "scripts": {
     "package:build": "sls package",
     "deploy:dev": "sls deploy --stage dev",
-    "local": "sls offline --noPrependStageInUrl"
+    "local": "sls offline --noPrependStageInUrl",
+    "serverless:remove": "sls remove"
   },
   "author": "",
   "license": "ISC",

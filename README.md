@@ -70,17 +70,14 @@ Combination of `cloudfront:setup` and `cloudfront:build:deploy` commands with or
 
 Remove an entire stack configured in `serverless.yml` via CloudFormation.
 
-# Task 2:
 ### CloudFront URL:
-https://d2jn2th55bjksb.cloudfront.net
+https://d2wn6alc0elb42.cloudfront.net
 
 ### S3-website:
 http://aws-boardgames-shop.s3-website-us-east-1.amazonaws.com/
 
-# Task 3:
 ### Product Service API:
-- https://afkswsifzh.execute-api.us-east-1.amazonaws.com/dev/products
-- https://afkswsifzh.execute-api.us-east-1.amazonaws.com/dev/products/1
+- https://ei8y1j35m9.execute-api.us-east-1.amazonaws.com/dev/products
 
 ### SWAGGER documentation:
 https://app.swaggerhub.com/apis/Eillihn/shop-react-redux-cloudfront/1.0.0
@@ -99,3 +96,18 @@ To fix EMFILE error when launching the serverless “deploy” script:
    var gracefulFs = require('graceful-fs')
    gracefulFs.gracefulify(realFs)
    const fs = BbPromise.promisifyAll(realFs);
+
+## S3 403 Forbidden
+
+{
+  "Version": "2008-10-17",
+  "Statement": [
+    {
+      "Sid": "AllowCloudFrontAccessIdentity",
+      "Effect": "Allow",
+      Principal": "*",
+      "Action": "s3:GetObject",
+      "Resource": "arn:aws:s3:::aws-boardgames-shop/*"
+    }
+  ]
+}

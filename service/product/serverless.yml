@@ -1,0 +1,157 @@
+service: product-service
+frameworkVersion: '3'
+variablesResolutionMode: 20210219
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  stage: dev
+  region: us-east-1
+  environment:
+    PRODUCTS_TABLE_NAME: Products
+    STOCKS_TABLE_NAME: Stocks
+
+plugins:
+  serverless-export-outputs
+
+resources:
+  Resources:
+    ProductsServiceLambdaAccessRole:
+      Type: AWS::IAM::Role
+      Properties:
+        RoleName: ProductsServiceLambdaAccessRole
+        AssumeRolePolicyDocument:
+          Version: '2012-10-17'
+          Statement:
+            - Effect: Allow
+              Principal:
+                Service:
+                  - lambda.amazonaws.com
+              Action:
+                - sts:AssumeRole
+        ManagedPolicyArns:
+          - arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole
+          - arn:aws:iam::aws:policy/AmazonSQSFullAccess
+          - arn:aws:iam::aws:policy/AmazonSNSFullAccess
+          - arn:aws:iam::aws:policy/AWSLambda_FullAccess
+        Policies:
+          - PolicyName: GetProductsListLambdaPolicy
+            PolicyDocument:
+              Version: '2012-10-17'
+              Statement:
+                - Effect: Allow
+                  Action:
+                    - dynamodb:*
+                  Resource:
+                    - arn:aws:dynamodb:us-east-1:154716314884:table/Products
+                    - arn:aws:dynamodb:us-east-1:154716314884:table/Stocks
+          - PolicyName: LambdaBasicExecutionPolicy
+            PolicyDocument:
+              Version: '2012-10-17'
+              Statement:
+                - Effect: Allow
+                  Action:
+                    - logs:CreateLogGroup
+                    - logs:CreateLogStream
+                    - logs:PutLogEvents
+                  Resource:
+                    - arn:aws:logs:us-east-1:154716314884:log-group:/aws/lambda/${self:service}-dev-createProduct:*
+                    - arn:aws:logs:us-east-1:154716314884:log-group:/aws/lambda/${self:service}-dev-getProductsById:*
+                    - arn:aws:logs:us-east-1:154716314884:log-group:/aws/lambda/${self:service}-dev-getProductsList:*
+                    - arn:aws:logs:us-east-1:154716314884:log-group:/aws/lambda/${self:service}-dev-catalogBatchProcess:*
+    CatalogItemsQueue:
+      Type: 'AWS::SQS::Queue'
+
+#   1) Comment events in case of error CREATE_FAILED: CatalogItemsQueueEventSourceMapping "An event source mapping with SQS arn already exists".
+#   2) Then uncomment and run build once again
+#   3) aws lambda delete-event-source-mapping --uuid
+#   4) Run once again
+
+    CatalogItemsQueueEventSourceMapping:
+      Type: 'AWS::Lambda::EventSourceMapping'
+      Properties:
+        BatchSize: 5
+        EventSourceArn: !GetAtt CatalogItemsQueue.Arn
+        FunctionName: !GetAtt CatalogBatchProcessLambdaFunction.Arn
+    CreateProductTopic:
+      Type: 'AWS::SNS::Topic'
+      Properties:
+        TopicName: CreateProductTopicName
+    CreateProductTopicSubscription:
+      Type: 'AWS::SNS::Subscription'
+      Properties:
+        Protocol: 'email'
+        TopicArn: !Ref CreateProductTopic
+        Endpoint: 'hanna_svirskaya@epam.com'
+  #    ProductsTable:
+  #      Type: AWS::DynamoDB::Table
+  #      Properties:
+  #        TableName: Products
+  #        AttributeDefinitions:
+  #          - AttributeName: id
+  #            AttributeType: S
+  #        KeySchema:
+  #          - AttributeName: id
+  #            KeyType: HASH
+  #        ProvisionedThroughput:
+  #          ReadCapacityUnits: 5
+  #          WriteCapacityUnits: 5
+  #    StocksTable:
+  #      Type: AWS::DynamoDB::Table
+  #      Properties:
+  #        TableName: Stocks
+  #        AttributeDefinitions:
+  #          - AttributeName: product_id
+  #            AttributeType: S
+  #        KeySchema:
+  #          - AttributeName: product_id
+  #            KeyType: HASH
+  #        ProvisionedThroughput:
+  #          ReadCapacityUnits: 5
+  #          WriteCapacityUnits: 5
+  Outputs:
+    CatalogItemsQueueUrl:
+      Description: 'SQS Queue URL'
+      Value: !GetAtt CatalogItemsQueue.QueueUrl
+      Export:
+        Name: CatalogItemsQueueUrl
+
+
+functions:
+  createProduct:
+    handler: src/createProduct.handler
+    role: ProductsServiceLambdaAccessRole
+    events:
+      - http:
+          path: products
+          method: post
+          cors: true
+  getProductsList:
+    handler: src/getProductsList.handler
+    role: ProductsServiceLambdaAccessRole
+    events:
+      - http:
+          path: products
+          method: get
+          cors: true
+  getProductsById:
+    handler: src/getProductsById.handler
+    role: ProductsServiceLambdaAccessRole
+    events:
+      - http:
+          path: products/{productId}
+          method: get
+          cors: true
+          request:
+            parameters:
+              paths:
+                productId: true
+  catalogBatchProcess:
+    handler: src/catalogBatchProcess.handler
+    role: ProductsServiceLambdaAccessRole
+    events:
+      - sqs:
+          arn: !GetAtt CatalogItemsQueue.Arn
+    environment:
+      SNS_TOPIC_ARN: !Ref CreateProductTopic
+      CATALOG_ITEMS_QUEUE_URL: !GetAtt CatalogItemsQueue.QueueUrl
