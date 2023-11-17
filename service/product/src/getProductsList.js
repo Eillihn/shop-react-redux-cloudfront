@@ -1,4 +1,5 @@
-const AWS = require('aws-sdk');
+import AWS from 'aws-sdk';
+
 const dynamodb = new AWS.DynamoDB.DocumentClient({ region: 'us-east-1' });
 const response = {
   headers: {
@@ -6,7 +7,7 @@ const response = {
     'Access-Control-Allow-Credentials': true
   }
 };
-exports.handler = async () => {
+export const handler = async (event) => {
   try {
     const productsParams = {
       TableName: process.env.PRODUCTS_TABLE_NAME

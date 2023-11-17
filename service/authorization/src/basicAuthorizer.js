@@ -26,6 +26,7 @@ export const handler = async (event, context, callback) => {
 
     if (credentials[0] === USERNAME && credentials[1] === PASSWORD) {
       console.log('Credentials are ok');
+      console.log(event);
       callback(null, generatePolicy(credentials[0], 'Allow', event.methodArn));
     } else {
       console.log('Credentials are not ok');
@@ -38,9 +39,10 @@ export const handler = async (event, context, callback) => {
 };
 
 function generatePolicy(principalId, effect, resource) {
-  const authResponse = {};
+  const authResponse = {
+    principalId
+  };
 
-  authResponse.principalId = principalId;
   if (effect && resource) {
     const policyDocument = {
       Version: '2012-10-17',

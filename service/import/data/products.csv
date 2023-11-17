@@ -1,11 +1,31 @@
 id;title;description;price;category;author;weight;players;count
-456789;Monopoly;A classic board game where players buy, trade, and develop properties to become the wealthiest tycoon.;24.99;Strategy;Charles Darrow;1.4;2-8;10
-987654;Connect 4;A two-player strategy game where players take turns dropping colored discs to form a row of four.;15.99;Strategy;Howard Wexler;0.8;2;12
-123456;Sorry!;A family board game where players move pawns around the board, aiming to get all their pawns to the home space.;19.99;Family;William Henry Storey;1.0;2-4;11
-654321;Uno;A popular card game where players match cards by number or color and aim to be the first to play all their cards.;8.99;Card Game;Merle Robbins;0.2;2-10;2
-789123;Pictionary;A drawing and guessing game where players sketch clues to words and phrases.;24.99;Party;Robert Angel;0.6;4+;3
-321789;Scythe;A strategy board game set in an alternate-history 1920s where players compete for dominance and resources.;49.99;Strategy;Jamey Stegmaier;2.2;1-7;7
-135792;Jenga;A classic wooden block stacking game where players take turns removing blocks without causing the tower to collapse.;12.99;Party;Leslie Scott;0.9;1+;23
-876543;Battleship;A strategic naval combat game where players call out coordinates to sink each other's hidden fleets.;17.99;Strategy;Clifford Von Wickler;1.2;2;89
-543210;Dixit;A card-based party game where players use abstract illustrations to tell stories and guess each other's cards.;34.99;Party;Jean-Louis Roubira;1.2;3-6;1
-219876;Splendor;A card-based board game where players collect gems to purchase development cards and build a wealthy empire.;29.99;Strategy;Marc André;1.4;2-4;56
+f96f5064-1232-4bf9-b6f1-cde768cba378;Monopoly;A classic board game where players buy, trade, and develop properties to become the wealthiest tycoon.;24.99;Strategy;Charles Darrow;1.4;2-8;10
+a51e85c7-51a7-4177-b7e7-2cf4412a7eae;Connect 4;A two-player strategy game where players take turns dropping colored discs to form a row of four.;15.99;Strategy;Howard Wexler;0.8;2;12
+cc1c8d62-fdb9-4db2-86eb-4514a95d94f2;Sorry!;A family board game where players move pawns around the board, aiming to get all their pawns to the home space.;19.99;Family;William Henry Storey;1.0;2-4;11
+d79607fe-6a04-4c7b-909b-862e2c63a18c;Uno;A popular card game where players match cards by number or color and aim to be the first to play all their cards.;8.99;Card Game;Merle Robbins;0.2;2-10;2
+4f13c354-3658-4d65-b9bc-5438c33b5dd8;Pictionary;A drawing and guessing game where players sketch clues to words and phrases.;24.99;Party;Robert Angel;0.6;4+;3
+7f23a882-3e2a-4f9f-8ed3-6926d3d14a2d;Scythe;A strategy board game set in an alternate-history 1920s where players compete for dominance and resources.;49.99;Strategy;Jamey Stegmaier;2.2;1-7;7
+7f08c1f8-50b3-4a04-a8cf-2e49f1f520d3;Jenga;A classic wooden block stacking game where players take turns removing blocks without causing the tower to collapse.;12.99;Party;Leslie Scott;0.9;1+;23
+bde9f0bc-c0a4-4b17-8d7b-b0c981dd0db1;Battleship;A strategic naval combat game where players call out coordinates to sink each other's hidden fleets.;17.99;Strategy;Clifford Von Wickler;1.2;2;89
+1b00a195-7e91-4bd9-90f2-11b625de59f3;Dixit;A card-based party game where players use abstract illustrations to tell stories and guess each other's cards.;34.99;Party;Jean-Louis Roubira;1.2;3-6;1
+d7c3cf87-9d48-4f48-a1de-5034c7b7a8a5;Splendor;A card-based board game where players collect gems to purchase development cards and build a wealthy empire.;29.99;Strategy;Marc André;1.4;2-4;56
+c4a62a3a-03c9-4c2e-99b0-9cb2a87b6b08;Settlers of Catan;A popular strategy board game where players collect and trade resources to build roads, settlements, and cities.;34.99;Strategy;Klaus Teuber;1.5;3-4;4
+4f81f4b3-e4f6-4f52-b3c5-2817e3c5f555;Ticket to Ride;A railway-themed board game where players collect train cards and build routes across a map.;39.99;Strategy;Alan R. Moon;1.2;2-5;5
+07b9d97b-61ab-4df8-9e12-8499c64b7594;Pandemic;A cooperative board game where players work together to stop the spread of deadly diseases.;44.99;Cooperative;Matt Leacock;1.0;2-4;10
+853bbf52-6f7d-4c6e-bc03-6220bdaef13c;Carcassonne;A tile-laying board game where players build a medieval landscape with cities, roads, and fields.;29.99;Tile Placement;Klaus-Jürgen Wrede;0.9;2-5;7
+7eb4c1bf-31a0-4db0-9e0a-b298d76e28e3;Dominion;A deck-building card game where players compete to build the most powerful kingdom.;36.99;Deck Building;Donald X. Vaccarino;0.7;2-4;12
+d842e8d2-ea8f-4872-bb8d-09acff18d29d;Chess;A classic two-player strategy board game with a history dating back over a thousand years.;19.99;Strategy;Unknown;1.1;2;45
+dc5ff383-64e2-4c76-a0cf-8e2b97e7312c;Risk;A global domination strategy board game where players vie for control of the world.;27.99;Strategy;Albert Lamorisse;1.3;2-6;78
+f55144f7-96f2-4cc5-b5ea-632c8a166be6;Scrabble;A word game where players create words on a game board using letter tiles with different point values.;23.99;Word;Alfred Butts;0.8;2-4;10
+9b4005f4-6480-42f2-9e9d-0e6112f1e685;The Settlers of Catan: Cities & Knights;An expansion for Settlers of Catan that adds new elements and challenges to the game.;19.99;Strategy;Klaus Teuber;0.3;3-4;45
+f789e92a-97d9-492b-b152-cbe5a12ac13e;Twilight Struggle;A two-player game simulating the Cold War, where players compete for global influence.;49.99;Strategy;Ananda Gupta and Jason Matthews;1.4;2;21
+6a7311e8-8225-4c98-b46e-09d9cbf3b4a2;Agricola;A farming-themed board game where players build and manage their own farms.;42.99;Strategy;Uwe Rosenberg;1.2;1-5;32
+0f2287a4-6b0e-4961-827b-e4d81f1b37d1;Betrayal at Baldur's Gate;A game where players explore a haunted house, but one of them may betray the group.;37.99;Horror;Avalon Hill;1.0;3-6;30
+6c4286e2-9f88-4c48-98c9-b269bb7d823d;7 Wonders;A card drafting game where players build ancient civilizations and compete for resources.;33.99;Card Drafting;Antoine Bauza;0.9;2-7;85
+d785df5d-37c2-4a2d-b6d9-50ab3d4c29b4;Betrayal at House on the Hill;A horror-themed game where players explore a haunted mansion with a traitor mechanic.;39.99;Horror;Avalon Hill;1.2;3-6;96
+d6e8a5c5-b85c-4b96-a3a5-5c52a120408f;Pictionary;A drawing and guessing game where players sketch clues to words and phrases.;24.99;Party;Robert Angel;0.6;4+;41
+2f2f8838-c9c2-4e80-bb27-356d4f5738d5;Axis & Allies;A WWII-themed strategy board game where players command armies and engage in global conflict.;46.99;Strategy;Larry Harris Jr.;1.5;2-5;25
+c29a1581-2f29-4da5-bf87-ef6a28ff2a0c;Codenames;A word-based party game where players give one-word clues to guess their team's secret agents.;19.99;Party;Vlaada Chvátil;0.5;2-8;26
+55f4512b-32cf-4975-9c5d-4a3a1f11ea2d;Betrayal Legacy;A legacy version of Betrayal at Baldur's Gate with evolving storylines over multiple sessions.;59.99;Horror;Avalon Hill;1.2;3-5;1
+0ec5bc8e-58f1-471c-a780-cd8b1a65fde3;Terraforming Mars;A strategy game where players terraform Mars by developing industries and greenery.;49.99;Strategy;Jacob Fryxelius;1.6;1-5;2
+2e0c803f-4a5e-4cf0-bb48-d7c3a09e51cd;Gloomhaven;A cooperative campaign-driven dungeon crawl board game set in a dark fantasy world.;99.99;Adventure;Isaac Childres;11.0;1-4;8

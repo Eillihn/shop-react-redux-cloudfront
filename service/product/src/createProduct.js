@@ -1,4 +1,6 @@
-const AWS = require('aws-sdk');
+import AWS from 'aws-sdk';
+import uuid from 'uuid';
+
 const dynamodb = new AWS.DynamoDB.DocumentClient({ region: 'us-east-1' });
 const response = {
   headers: {
@@ -6,11 +8,11 @@ const response = {
     'Access-Control-Allow-Credentials': true
   }
 };
-exports.handler = async (event) => {
+export const handler = async (event) => {
   console.log(`Product data: ${event.body}`);
 
   try {
-    const { productId = generateProductId(), title, description, price, category, author, weight, players, count = 0 } =
+    const { id = uuid.v4(), title, description, price, category, author, weight, players, count = 0 } =
       JSON.parse(event.body);
 
     if (!title || !price) {
@@ -24,7 +26,7 @@ exports.handler = async (event) => {
     const productParams = {
       TableName: process.env.PRODUCTS_TABLE_NAME,
       Item: {
-        id: productId,
+        id,
         title,
         description,
         price,
@@ -37,7 +39,7 @@ exports.handler = async (event) => {
     const stockParams = {
       TableName: process.env.STOCKS_TABLE_NAME,
       Item: {
-        product_id: productId,
+        product_id: id,
         count
       }
     };
@@ -59,9 +61,3 @@ exports.handler = async (event) => {
     };
   }
 };
-
-function generateProductId() {
-  const min = 100000;
-  const max = 999999;
-  return Math.floor(Math.random() * (max - min + 1)) + min;
-}

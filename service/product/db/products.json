@@ -1,6 +1,6 @@
 [
   {
-    "id": 1,
+    "id": "c4a62a3a-03c9-4c2e-99b0-9cb2a87b6b08",
     "title": "Settlers of Catan",
     "description": "A popular strategy board game where players collect and trade resources to build roads, settlements, and cities.",
     "price": 34.99,
@@ -10,7 +10,7 @@
     "players": "3-4"
   },
   {
-    "id": 2,
+    "id": "4f81f4b3-e4f6-4f52-b3c5-2817e3c5f555",
     "title": "Ticket to Ride",
     "description": "A railway-themed board game where players collect train cards and build routes across a map.",
     "price": 39.99,
@@ -20,7 +20,7 @@
     "players": "2-5"
   },
   {
-    "id": 3,
+    "id": "07b9d97b-61ab-4df8-9e12-8499c64b7594",
     "title": "Pandemic",
     "description": "A cooperative board game where players work together to stop the spread of deadly diseases.",
     "price": 44.99,
@@ -30,7 +30,7 @@
     "players": "2-4"
   },
   {
-    "id": 4,
+    "id": "853bbf52-6f7d-4c6e-bc03-6220bdaef13c",
     "title": "Carcassonne",
     "description": "A tile-laying board game where players build a medieval landscape with cities, roads, and fields.",
     "price": 29.99,
@@ -40,7 +40,7 @@
     "players": "2-5"
   },
   {
-    "id": 5,
+    "id": "7eb4c1bf-31a0-4db0-9e0a-b298d76e28e3",
     "title": "Dominion",
     "description": "A deck-building card game where players compete to build the most powerful kingdom.",
     "price": 36.99,
@@ -50,7 +50,7 @@
     "players": "2-4"
   },
   {
-    "id": 6,
+    "id": "d842e8d2-ea8f-4872-bb8d-09acff18d29d",
     "title": "Chess",
     "description": "A classic two-player strategy board game with a history dating back over a thousand years.",
     "price": 19.99,
@@ -60,7 +60,7 @@
     "players": "2"
   },
   {
-    "id": 7,
+    "id": "dc5ff383-64e2-4c76-a0cf-8e2b97e7312c",
     "title": "Risk",
     "description": "A global domination strategy board game where players vie for control of the world.",
     "price": 27.99,
@@ -70,7 +70,7 @@
     "players": "2-6"
   },
   {
-    "id": 8,
+    "id": "f55144f7-96f2-4cc5-b5ea-632c8a166be6",
     "title": "Scrabble",
     "description": "A word game where players create words on a game board using letter tiles with different point values.",
     "price": 23.99,
@@ -80,7 +80,7 @@
     "players": "2-4"
   },
   {
-    "id": 9,
+    "id": "9b4005f4-6480-42f2-9e9d-0e6112f1e685",
     "title": "The Settlers of Catan: Cities & Knights",
     "description": "An expansion for Settlers of Catan that adds new elements and challenges to the game.",
     "price": 19.99,
@@ -90,7 +90,7 @@
     "players": "3-4"
   },
   {
-    "id": 10,
+    "id": "f789e92a-97d9-492b-b152-cbe5a12ac13e",
     "title": "Twilight Struggle",
     "description": "A two-player game simulating the Cold War, where players compete for global influence.",
     "price": 49.99,
@@ -100,7 +100,7 @@
     "players": "2"
   },
   {
-    "id": 11,
+    "id": "6a7311e8-8225-4c98-b46e-09d9cbf3b4a2",
     "title": "Agricola",
     "description": "A farming-themed board game where players build and manage their own farms.",
     "price": 42.99,
@@ -110,7 +110,7 @@
     "players": "1-5"
   },
   {
-    "id": 12,
+    "id": "0f2287a4-6b0e-4961-827b-e4d81f1b37d1",
     "title": "Betrayal at Baldur's Gate",
     "description": "A game where players explore a haunted house, but one of them may betray the group.",
     "price": 37.99,
@@ -120,7 +120,7 @@
     "players": "3-6"
   },
   {
-    "id": 13,
+    "id": "6c4286e2-9f88-4c48-98c9-b269bb7d823d",
     "title": "7 Wonders",
     "description": "A card drafting game where players build ancient civilizations and compete for resources.",
     "price": 33.99,
@@ -130,7 +130,7 @@
     "players": "2-7"
   },
   {
-    "id": 14,
+    "id": "d785df5d-37c2-4a2d-b6d9-50ab3d4c29b4",
     "title": "Betrayal at House on the Hill",
     "description": "A horror-themed game where players explore a haunted mansion with a traitor mechanic.",
     "price": 39.99,
@@ -140,7 +140,7 @@
     "players": "3-6"
   },
   {
-    "id": 15,
+    "id": "d6e8a5c5-b85c-4b96-a3a5-5c52a120408f",
     "title": "Pictionary",
     "description": "A drawing and guessing game where players sketch clues to words and phrases.",
     "price": 24.99,
@@ -150,7 +150,7 @@
     "players": "4+"
   },
   {
-    "id": 16,
+    "id": "2f2f8838-c9c2-4e80-bb27-356d4f5738d5",
     "title": "Axis & Allies",
     "description": "A WWII-themed strategy board game where players command armies and engage in global conflict.",
     "price": 46.99,
@@ -160,7 +160,7 @@
     "players": "2-5"
   },
   {
-    "id": 17,
+    "id": "c29a1581-2f29-4da5-bf87-ef6a28ff2a0c",
     "title": "Codenames",
     "description": "A word-based party game where players give one-word clues to guess their team's secret agents.",
     "price": 19.99,
@@ -170,7 +170,7 @@
     "players": "2-8"
   },
   {
-    "id": 18,
+    "id": "55f4512b-32cf-4975-9c5d-4a3a1f11ea2d",
     "title": "Betrayal Legacy",
     "description": "A legacy version of Betrayal at Baldur's Gate with evolving storylines over multiple sessions.",
     "price": 59.99,
@@ -180,7 +180,7 @@
     "players": "3-5"
   },
   {
-    "id": 19,
+    "id": "0ec5bc8e-58f1-471c-a780-cd8b1a65fde3",
     "title": "Terraforming Mars",
     "description": "A strategy game where players terraform Mars by developing industries and greenery.",
     "price": 49.99,
@@ -190,7 +190,7 @@
     "players": "1-5"
   },
   {
-    "id": 20,
+    "id": "2e0c803f-4a5e-4cf0-bb48-d7c3a09e51cd",
     "title": "Gloomhaven",
     "description": "A cooperative campaign-driven dungeon crawl board game set in a dark fantasy world.",
     "price": 99.99,

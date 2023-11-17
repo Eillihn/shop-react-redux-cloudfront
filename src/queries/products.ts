@@ -6,7 +6,7 @@ import React from "react";
 
 export function useProducts() {
   return useQuery<AvailableProduct[], AxiosError>('products', async () => {
-    const res = await axios.get<AvailableProduct[]>(`${API_PATHS.product}`, {
+    const res = await axios.get<AvailableProduct[]>(`${API_PATHS.product}/products`, {
       headers: {
         Authorization: `Basic ${localStorage.getItem('authorization_token')}`
       }
@@ -59,7 +59,7 @@ export function useRemoveProductCache() {
 
 export function useUpsertAvailableProduct() {
   return useMutation((values: AvailableProduct) =>
-    axios.post<AvailableProduct>(`${API_PATHS.product}`, values, {
+    axios.post<AvailableProduct>(`${API_PATHS.product}/products`, values, {
       headers: {
         Authorization: `Basic ${localStorage.getItem("authorization_token")}`,
       },
