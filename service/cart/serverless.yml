@@ -8,10 +8,10 @@ provider:
   stage: dev
   region: us-east-1
   environment:
-    PGHOST: db-postgres-cart.cbi8iv7qjpxl.us-east-1.rds.amazonaws.com
+    PGHOST: localhost
     PGUSER: postgres
-    PGPASSWORD: U7ACB18StNFozaReJSIu
-    PGDATABASE: postgres
+    PGPASSWORD: admin
+    PGDATABASE: admin
     PGPORT: 5432
   iamRoleStatements:
     - Effect: Allow
