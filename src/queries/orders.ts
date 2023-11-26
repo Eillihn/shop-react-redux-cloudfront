@@ -5,14 +5,17 @@ import API_PATHS from "~/constants/apiPaths";
 import { OrderStatus } from "~/constants/order";
 import { Order } from "~/models/Order";
 
+interface OrderResponse {
+  data: Order[]
+};
 export function useOrders() {
   return useQuery<Order[], AxiosError>("orders", async () => {
-    const res = await axios.get<Order[]>(`${API_PATHS.order}/order`, {
+    const res = await axios.get<OrderResponse>(`${API_PATHS.order}/order`, {
       headers: {
         Authorization: `Basic ${localStorage.getItem("authorization_token")}`,
       },
     });
-    return res.data;
+    return res.data.data;
   });
 }
 
