@@ -1,0 +1,27 @@
+name: Run other repo workflow
+
+on:
+  push:
+    branches:
+      - testing-tool
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repo1
+        uses: actions/checkout@v2
+        with:
+          repository: Eillihn/rs-cart-api
+
+      - name: Trigger Workflow in testing tool repo
+        run: |
+          curl -X POST \
+            -H "Authorization: Bearer ${{ secrets.TESTING_TOOL }}" \
+            -H "Accept: application/vnd.github.everest-preview+json" \
+            -H "Content-Type: application/json" \
+            https://api.github.com/repos/Eillihn/rs-cart-api/dispatches \
+            --data '{"event_type": "trigger-workflow"}'
+        env:
+          TESTING_TOOL: ${{ secrets.TESTING_TOOL }}
