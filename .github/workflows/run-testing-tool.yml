@@ -1,9 +1,6 @@
 name: Run other repo workflow
 
-on:
-  push:
-    branches:
-      - testing-tool
+on: workflow_dispatch
 
 jobs:
   build:
